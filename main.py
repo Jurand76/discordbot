@@ -9,12 +9,6 @@ from stability_api import generate_upscaled_image
 intents = discord.Intents.default()
 intents.message_content = True  # Pozwala odczytywać treść wiadomości na serwerze
 
-"""
-Aby bot czytał wiadomości z kanału - w Discord Developer Portal:
-- przejdź do zakładki Bot
-- w sekcji Privileged Gateway Intents włącz Message Content Intent.
-"""
-
 # push intents to client
 client = discord.Client(intents=intents)
 
