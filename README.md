@@ -1,5 +1,6 @@
 # discordbot
 Python discord bot. Generates jokes, images and upscales last generated image.
+Enter "!help" in discord channel to get info about commands
 
 What do you need to do?
 1. Generate Discord Bot Token. 
