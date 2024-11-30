@@ -29,8 +29,8 @@ def generate_image(prompt):
     prompt, args = parse_command(prompt)
     aspect_ratio = args.get("aspect_ratio", "1:1")  # Domyślne aspect ratio to 1:1
 
-    print(f"Obrazek prompt: {prompt}")
-    print(f"Obrazek aspect ratio: {aspect_ratio}")
+    print(f"Prompt: {prompt}")
+    print(f"Aspect ratio: {aspect_ratio}")
 
     response = requests.post(
         f"https://api.stability.ai/v2beta/stable-image/generate/ultra",
