@@ -1,6 +1,7 @@
 import discord
 
 import secrets
+from joke_api import generate_joke
 from secrets import getDiscordToken
 
 # Inicjalizacja klienta bota
@@ -28,6 +29,19 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         await message.channel.send(f'Cześć, {message.author.name}!')
+
+    if message.content.startswith('!joke'):
+        result = generate_joke()
+        await message.channel.send(result)
+
+    if message.content.startswith('!help'):
+        result = '''
+            Commands for bot:
+                - !help, 
+                - !joke, 
+                - !hello
+        '''
+        await message.channel.send(result)
 
 
 # Token bota
