@@ -5,7 +5,7 @@ from secrets import getDiscordToken
 from stability_api import generate_image
 from stability_api import generate_upscaled_image
 
-# Inicjalizacja klienta bota
+# initialization of bot's client
 intents = discord.Intents.default()
 intents.message_content = True  # Pozwala odczytywać treść wiadomości na serwerze
 
@@ -15,7 +15,7 @@ Aby bot czytał wiadomości z kanału - w Discord Developer Portal:
 - w sekcji Privileged Gateway Intents włącz Message Content Intent.
 """
 
-# Przekaż intents do klienta
+# push intents to client
 client = discord.Client(intents=intents)
 
 @client.event
@@ -28,13 +28,16 @@ async def on_message(message):
     if message.author == client.user:
         return  # Ignoruj wiadomości wysyłane przez bota
 
+    # welcome command
     if message.content.startswith('!hello'):
         await message.channel.send(f'Cześć, {message.author.name}!')
 
+    # jokes generator
     if message.content.startswith('!joke'):
         result = generate_joke()
         await message.channel.send(result)
 
+    # images generator
     if message.content.startswith('!image'):
         prompt = message.content[len("!image "):].strip()
         if not prompt:
@@ -48,6 +51,7 @@ async def on_message(message):
         else:
             await message.channel.send(f"Nie udało się wygenerować obrazu. {image_path}. Spróbuj ponownie.")
 
+    # images upscaler
     if message.content.startswith('!upscale'):
         await message.channel.send("Upscaling wygenerowanego obrazu, proszę czekać...")
         image_path = generate_upscaled_image()
@@ -70,6 +74,6 @@ async def on_message(message):
         await message.channel.send(result)
 
 
-# Token bota
+# bot's token and client
 TOKEN = getDiscordToken()
 client.run(TOKEN)

@@ -13,3 +13,6 @@ def getDiscordToken():
 
 def getStabilityToken():
     return "YOUR_STABILITY_AI_KEY"
+
+4. In Discord Developer Portal in Bot/Privileged Gateway Intents enable Message Content Intent
+5. Let go your bot into your Discord server
